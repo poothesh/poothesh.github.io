@@ -1,68 +1,111 @@
-/* Main container for coin flip */
-.coin-flip-container {
-    position: relative;
-    height: 120px; /* Height of the coin */
-    width: 120px;  /* Width of the coin */
-    margin: 20px;
-    display: inline-block;
+.school-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px;
+    padding: 20px 0;
+    padding-top: 70px;
+    
   }
-  
-  /* Coin style */
-  .coin-flip {
-    font-size: 100px; /* Adjusted size for the coin */
-    width: 1em; /* Adjusted for better proportions */
-    height: 1em;
+
+  .school-name{
+      text-align: center;
+      padding: 30px;
+      font-weight: 200;
+      
+  }
+
+  .info-section {
+    text-align: center;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.055);
+    width: 29%;
+    box-shadow: 0 0 1px #0000009d, 0 0 1px #000000, 0 0 1px #000000c0;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes dashMove {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 0;
+    }
+}
+
+.info-section::before,
+.info-section::after {
+    content: "";
     position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, transparent 50%, #16dcff 50%);
+    background-size: 10px 100%;
+    animation: dashMove 10s linear infinite;
+}
+
+.info-section::before {
     top: 0;
     left: 0;
-    right: 0;
+}
+
+.info-section::after {
     bottom: 0;
-    animation: rotate_ 2s infinite linear; /* Faster animation for a more realistic flip */
-    transform-style: preserve-3d; /* Enables 3D transformations */
+    left: 0;
+    animation-delay: 1s;
+}
+
+  .info-section h2 {
+    color: #41b0ff;
+    margin-bottom: 20px;
   }
-  
-  /* Coin side styles */
-  .coin-flip .side,
-  .coin-flip .tails {
+
+  .pixel {
     position: absolute;
-    width: 100%; /* Full width of the container */
-    height: 100%; /* Full height of the container */
-    overflow: hidden;
-    border-radius: 50%; /* Makes the coin round */
-    backface-visibility: hidden; /* Hides the back face */
+    width: 10px;
+    height: 10px;
+    background-size: 150px 150px;
+    transition: transform 1s ease-out, opacity 1s ease-out;
   }
-  
-  /* Front side style */
-  .coin-flip .side {
-    background: linear-gradient(#41b0ff, #141001);
-    transform: rotateY(0deg); /* Front side is facing the user */
+
+  .image-pixel-wrapper {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    background: none;
+    border-radius: 50%;
   }
-  
-  /* Tails side style */
-  .coin-flip .tails {
-    background: linear-gradient(#b041ff, #140010); /* Different gradient for the back side */
-    transform: rotateY(180deg); /* Tails side */
+
+  .hint-follow {
+    padding: 40px 30px;
+    background: none;
+    color: #41b0ff;
+    text-align: center;
+    transition: all 0.1s ease;
   }
-  
-  /* Rotate animation */
-  @keyframes rotate_ {
-    0% {
-      transform: rotateY(0deg);
-    }
-    50% {
-      transform: rotateY(180deg); /* Halfway through the flip */
-    }
-    100% {
-      transform: rotateY(360deg); /* Complete rotation */
-    }
+
+  .hint-follow:hover {
+    text-shadow: 0 0 5px #41b0ff, 0 0 10px #41b0ff, 0 0 15px #41b0ff;
   }
-  
-  /* Styles for the image inside each side of the coin */
-  .coin-flip .side img,
-  .coin-flip .tails img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%; /* Makes the image round */
+
+  .footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #555;
   }
-  
+
+  sup {
+    display: inline-block;
+    transform: rotate(40deg);
+  }
+  .percentage-mark{
+    text-decoration: none;
+    color: aliceblue;
+  }
+  .percentage-mark:hover{
+    color: #16dcff;
+  }

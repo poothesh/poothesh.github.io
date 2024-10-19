@@ -182,3 +182,52 @@ document.body.addEventListener('pointermove', (event) => {
         }
     }).join('');
     nameElement.innerHTML = repeatedName;
+
+
+
+
+    function setupPixelEffect(container, imgSrc) {
+        const rows = 15;
+        const cols = 15;
+        const pixelSize = 10;
+  
+        for (let row = 0; row < rows; row++) {
+          for (let col = 0; col < cols; col++) {
+            const pixel = document.createElement('div');
+            pixel.classList.add('pixel');
+            pixel.style.width = `${pixelSize}px`;
+            pixel.style.height = `${pixelSize}px`;
+            pixel.style.backgroundImage = `url(${imgSrc})`;
+            pixel.style.backgroundPosition = `-${col * pixelSize}px -${row * pixelSize}px`;
+            pixel.style.left = `${col * pixelSize}px`;
+            pixel.style.top = `${row * pixelSize}px`;
+            container.appendChild(pixel);
+          }
+        }
+      }
+  
+      function disappearIn3D(container) {
+        const pixels = container.querySelectorAll('.pixel');
+        pixels.forEach(pixel => {
+          const randomX = (Math.random() - 0.5) * 300;
+          const randomY = (Math.random() - 0.5) * 300;
+          const randomZ = (Math.random() - 0.5) * 300;
+  
+          pixel.style.transform = `translate3d(${randomX}px, ${randomY}px, ${randomZ}px) rotateX(${Math.random() * 360}deg) rotateY(${Math.random() * 360}deg)`;
+          pixel.style.opacity = '0';
+        });
+  
+        setTimeout(() => {
+          pixels.forEach(pixel => {
+            pixel.style.transform = 'translate3d(0, 0, 0)';
+            pixel.style.opacity = '1';
+          });
+        }, 1000);
+      }
+  
+      document.querySelectorAll('.image-pixel-wrapper').forEach(wrapper => {
+        const imgSrc = wrapper.getAttribute('data-img-src');
+        setupPixelEffect(wrapper, imgSrc);
+  
+        wrapper.addEventListener('click', () => disappearIn3D(wrapper));
+      });

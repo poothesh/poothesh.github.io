@@ -16,6 +16,8 @@
 .skills-container-main{
     width: 60%;
     background: none;
+    padding-top: 50px;
+    padding-bottom:50px;
 }
 .skill-icon {
     font-size: 40px;
