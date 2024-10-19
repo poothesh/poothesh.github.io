@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qualification Animation</title>
+  <style>
+    /* Main container styles */
+    .image-container {
+      min-height: 10vh;
+      display: flex; /* Use flexbox for layout */
+      justify-content: center; /* Center items horizontally */
+      align-items: center; /* Center items vertically */
+      gap: 50px; /* Space between images */
+      padding: 10px;
+    }
+
+    /* Title styles */
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #41b0ff;
+    }
+
+    /* Button styles */
+    .toggle-follow {
+      padding: 10px 20px;
+      background: none;
+      color: #41b0ff;
+      border-radius: 7px;
+      transition: all 0.1s ease;
+      float: left !important;
+      text-align: left;
+    }
+
+    .toggle-follow:hover {
+      text-shadow: 0 0 5px #41b0ff, 0 0 10px #41b0ff, 0 0 15px #41b0ff;
+    }
+
+    /* Pixel styling */
+    .pixel {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-size: 150px 150px;
+      background-color: #16dcff; /* Updated pixel color */
+      transition: transform 1s ease-out, opacity 1s ease-out;
+    }
+
+    /* Image wrapper styles */
+    .image-pixel-wrapper {
+      position: relative; /* Position relative for pixel effect */
+    }
+
+    .first-image {
+      width: 150px; /* Set a fixed width for the first image */
+      height: 150px;
+      size: 30px;
+    }
+
+    .second-image {
+      width: 150px; /* Set a fixed width for the second image */
+      height: 150px; /* Set a fixed height for the second image */
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Heading for the Qualification section -->
+  <h1>Qualification</h1>
+
+  <!-- Main container for the images -->
+  <div class="image-container">
+    <!-- Container for the first image -->
+    <div class="image-pixel-wrapper first-image" data-img-src="/portfolio/img/Shrivallividhyalayaa.png"></div>
+    <!-- Container for the second image -->
+    <div class="image-pixel-wrapper second-image" data-img-src="/portfolio/img/Century-Foundation-School.jpeg"></div>
+    <p class="toggle-follow">Don’t forget to click the image 😉😜</span></p>
+  </div>
+   
+  <script>
+    // Setup pixel effect for both images
+    function setupPixelEffect(container, imgSrc) {
+      const rows = 15;
+      const cols = 15;
+      const pixelSize = 10;
+
+      for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+          const pixel = document.createElement('div');
+          pixel.classList.add('pixel');
+          pixel.style.width = `${pixelSize}px`;
+          pixel.style.height = `${pixelSize}px`;
+          pixel.style.backgroundImage = `url(${imgSrc})`;
+          pixel.style.backgroundPosition = `-${col * pixelSize}px -${row * pixelSize}px`;
+          pixel.style.left = `${col * pixelSize}px`;
+          pixel.style.top = `${row * pixelSize}px`;
+          container.appendChild(pixel);
+        }
+      }
+    }
+
+    // Trigger disappearance animation
+    function disappearIn3D(container) {
+      const pixels = container.querySelectorAll('.pixel');
+      pixels.forEach(pixel => {
+        const randomX = (Math.random() - 0.5) * 300;
+        const randomY = (Math.random() - 0.5) * 300;
+        const randomZ = (Math.random() - 0.5) * 300;
+
+        pixel.style.transform = `translate3d(${randomX}px, ${randomY}px, ${randomZ}px) rotateX(${Math.random() * 360}deg) rotateY(${Math.random() * 360}deg)`;
+        pixel.style.opacity = '0';
+      });
+
+      // Reform the image after 1 second
+      setTimeout(() => {
+        pixels.forEach(pixel => {
+          pixel.style.transform = 'translate3d(0, 0, 0)';
+          pixel.style.opacity = '1';
+        });
+      }, 1000); // Adjusted delay to 1 second
+    }
+
+    // Add event listeners to trigger animation
+    document.querySelectorAll('.image-pixel-wrapper').forEach(wrapper => {
+      const imgSrc = wrapper.getAttribute('data-img-src');
+      setupPixelEffect(wrapper, imgSrc);
+
+      // Trigger on click
+      wrapper.addEventListener('click', () => disappearIn3D(wrapper));
+    });
+  </script>
+</body>
+</html>

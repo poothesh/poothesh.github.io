@@ -1,33 +1,64 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,309&display=swap');
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900 */
 
-body, html {
+/* .exo-2-<uniquifier> {
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+} */
+:root {
+    --primary-color: #41b0ff;
+    --secondary-color: #008000;
+  }
+  body, html {
     height: 100%;
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    overflow-x: hidden;
+    margin: 60px;
 }
 
 body {
     background-color: #041A40;
     background-size: cover;
-    overflow: hidden;
+
 }
 
+
 .glass {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(calc(var(--cardblur, 5) * 1px));
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0);
     z-index: 10; /* Ensure this is higher than the snowflakes */
+    
 }
 
 .nav-glass {
     background: rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(10px);
 }
+@keyframes colorChange {
+    0%, 100% {
+        color: white; /* Starting and ending color */
+    }
+    50% {
+        color: #16dcffd7; /* Desired color */
+    }
+}
 
+.navbar-brand {
+    display: inline-block;
+    font-size: 1.5rem; /* Adjust size as needed */
+    height: 50px;
+}
+
+.letter {
+    display: inline-block;
+    animation: colorChange 1s linear infinite; /* Infinite animation */
+    animation-fill-mode: forwards; /* Maintain final color at the end of the cycle */
+}
 .nav-link {
     color: #fff !important;
     transition: all 0.3s ease;
@@ -35,7 +66,7 @@ body {
 
 .nav-link:hover {
     transform: scale(1.1);
-    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+    text-shadow: 0 0 10px rgba(15, 151, 255, 0.8);
 }
 
 section {
@@ -44,11 +75,11 @@ section {
     align-items: center;
     justify-content: center;
     padding: 50px 20px;
-    padding-top: 90px;
+    padding-top: 0;
 }
 
 h1, h2 {
-    color: #fff;
+    color: #41b0ff;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
@@ -57,15 +88,6 @@ h1, h2 {
     margin: 0.2rem;
     background: rgba(255, 255, 255, 0.2) !important;
     color: #fff;
-}
-
-.profile-pic {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid rgba(255, 255, 255, 0.5);
-    margin-bottom: 20px;
 }
 
 .snowflake {

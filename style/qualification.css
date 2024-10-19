@@ -1,0 +1,68 @@
+/* Main container for coin flip */
+.coin-flip-container {
+    position: relative;
+    height: 120px; /* Height of the coin */
+    width: 120px;  /* Width of the coin */
+    margin: 20px;
+    display: inline-block;
+  }
+  
+  /* Coin style */
+  .coin-flip {
+    font-size: 100px; /* Adjusted size for the coin */
+    width: 1em; /* Adjusted for better proportions */
+    height: 1em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    animation: rotate_ 2s infinite linear; /* Faster animation for a more realistic flip */
+    transform-style: preserve-3d; /* Enables 3D transformations */
+  }
+  
+  /* Coin side styles */
+  .coin-flip .side,
+  .coin-flip .tails {
+    position: absolute;
+    width: 100%; /* Full width of the container */
+    height: 100%; /* Full height of the container */
+    overflow: hidden;
+    border-radius: 50%; /* Makes the coin round */
+    backface-visibility: hidden; /* Hides the back face */
+  }
+  
+  /* Front side style */
+  .coin-flip .side {
+    background: linear-gradient(#41b0ff, #141001);
+    transform: rotateY(0deg); /* Front side is facing the user */
+  }
+  
+  /* Tails side style */
+  .coin-flip .tails {
+    background: linear-gradient(#b041ff, #140010); /* Different gradient for the back side */
+    transform: rotateY(180deg); /* Tails side */
+  }
+  
+  /* Rotate animation */
+  @keyframes rotate_ {
+    0% {
+      transform: rotateY(0deg);
+    }
+    50% {
+      transform: rotateY(180deg); /* Halfway through the flip */
+    }
+    100% {
+      transform: rotateY(360deg); /* Complete rotation */
+    }
+  }
+  
+  /* Styles for the image inside each side of the coin */
+  .coin-flip .side img,
+  .coin-flip .tails img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; /* Makes the image round */
+  }
+  

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills Section</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Exo 2', sans-serif;
+            padding: 2rem;
+            margin: 0;
+        }
+
+        .skills-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: #41b0ff;
+        }
+
+        .skills-container {
+            min-height: 70vh;
+            display: flex;
+            justify-content: flex-start; /* Align to left */
+            align-items: flex-start;    /* Align to top of container */
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .skill-icon {
+            font-size: 40px;
+            color: white;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .skill-icon:hover {
+            text-shadow: 0 0 5px #41b0ff, 0 0 10px #41b0ff, 0 0 15px #41b0ff;
+        }
+
+        .toggle-follow {
+            padding: 10px 20px;
+            border: 2px solid #41b0ff;
+            background: none;
+            color: #41b0ff;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-follow:hover {
+            background: #41b0ff33;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="skills-title">Skills</h1>
+
+    <!-- Bootstrap Grid -->
+    <div class="skills-container-main" data-glow="">
+        <h1 class="skills-title">Skills</h1>
+        <div class="skills-container">
+            <i class="fab fa-html5 skill-icon" title="HTML" onclick="Glow(this)"></i>
+            <i class="fab fa-css3-alt skill-icon" title="CSS" onclick="Glow(this)"></i>
+            <i class="fab fa-js skill-icon" title="JavaScript"></i>
+            <i class="fab fa-java skill-icon" title="Java"></i>
+            <i class="fab fa-cuttlefish skill-icon" title="C++"></i>
+            <i class="fab fa-react skill-icon" title="React"></i>
+            <i class="fab fa-bootstrap skill-icon" title="Bootstrap"></i>
+            <i class="fab fa-sass skill-icon" title="Sass"></i>
+            <button class="toggle-follow" onclick="Glow()">Click to suprise</button>
+        </div>
+    </div>
+
+        <!-- Button -->
+        
+
+    <script>
+        const icons = document.querySelectorAll('.skill-icon');
+        const container = document.querySelector('.skills-container');
+        const toggleButton = document.querySelector('.toggle-follow');
+        let isFollowing = false;
+        let mouseX = 0, mouseY = 0;
+        let positions = [];
+        let waveAnimationFrame;
+        let startTime = Date.now();
+
+        // Initialize positions array
+        icons.forEach(() => {
+            positions.push({ x: 0, y: 0 });
+        });
+
+        function lerp(start, end, factor) {
+            return start + (end - start) * factor;
+        }
+
+        function getDistance(x1, y1, x2, y2) {
+            return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+        }
+
+        function updateWaveAnimation() {
+            if (isFollowing) return;
+
+            const currentTime = Date.now();
+            const elapsed = (currentTime - startTime) / 1000;
+
+            icons.forEach((icon, index) => {
+                const offset = index * (Math.PI / 4);
+                const yOffset = Math.sin(elapsed * 2 + offset) * 5;
+                icon.style.transform = `translateY(${yOffset}px)`;
+            });
+
+            waveAnimationFrame = requestAnimationFrame(updateWaveAnimation);
+        }
+
+        function updatePositions() {
+            if (!isFollowing) return;
+
+            let targetX = mouseX;
+            let targetY = mouseY;
+
+            icons.forEach((icon, index) => {
+                if (index === 0) {
+                    positions[0].x = lerp(positions[0].x, targetX, 0.15);
+                    positions[0].y = lerp(positions[0].y, targetY, 0.15);
+                } else {
+                    const prevX = positions[index - 1].x;
+                    const prevY = positions[index - 1].y;
+                    const distance = getDistance(positions[index].x, positions[index].y, prevX, prevY);
+                    const spacing = 30;
+
+                    if (distance > spacing) {
+                        const angle = Math.atan2(prevY - positions[index].y, prevX - positions[index].x);
+                        const targetX = prevX - Math.cos(angle) * spacing;
+                        const targetY = prevY - Math.sin(angle) * spacing;
+                        
+                        positions[index].x = lerp(positions[index].x, targetX, 0.2);
+                        positions[index].y = lerp(positions[index].y, targetY, 0.2);
+                    }
+                }
+
+                icon.style.left = `${positions[index].x}px`;
+                icon.style.top = `${positions[index].y}px`;
+                icon.style.transform = 'none';
+            });
+
+            requestAnimationFrame(updatePositions);
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+        });
+
+        toggleButton.addEventListener('click', () => {
+            isFollowing = !isFollowing;
+            container.classList.toggle('following');
+            
+            if (isFollowing) {
+                cancelAnimationFrame(waveAnimationFrame);
+
+                positions.forEach((pos, index) => {
+                    const iconRect = icons[index].getBoundingClientRect();
+                    pos.x = iconRect.left - container.getBoundingClientRect().left;
+                    pos.y = iconRect.top - container.getBoundingClientRect().top;
+                });
+
+                icons.forEach(icon => {
+                    icon.style.transform = 'none';
+                });
+                updatePositions();
+                toggleButton.textContent = 'Stop Following';
+            } else {
+                icons.forEach(icon => {
+                    icon.style.left = '';
+                    icon.style.top = '';
+                });
+                startTime = Date.now();
+                updateWaveAnimation();
+                toggleButton.textContent = 'Start Following';
+            }
+        });
+
+        updateWaveAnimation();
+    </script>
+</body>
+</html>

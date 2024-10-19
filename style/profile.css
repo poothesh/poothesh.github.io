@@ -1,0 +1,52 @@
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.rotating-border {
+    position: absolute;
+    width: 293px;
+    height: 293px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rotating-border::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, transparent, #16dcffd7, #90e0ef, #90e0ef, transparent);
+    animation: rotation_481 5s infinite linear;
+    z-index: 0;
+}
+
+.profile-pic {
+    position: relative;
+    width: 290px;
+    height: 290px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid transparent;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+    border-image-slice: 1;
+    z-index: 1;
+}
+
+@keyframes rotation_481 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
