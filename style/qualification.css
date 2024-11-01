@@ -106,6 +106,14 @@
     text-decoration: none;
     color: aliceblue;
   }
-  .percentage-mark:hover{
-    color: #16dcff;
-  }
+  .percentage-mark {
+    animation: blinkk 1s ease-in infinite alternate;
+}
+@keyframes blinkk {
+    from {
+        color: #16dcff;
+    }
+    to {
+        color: aliceblue;
+    }
+}

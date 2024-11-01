@@ -35,7 +35,6 @@ article {
   justify-content: space-between;
   box-shadow: 0 1rem 2rem -1rem black;
   padding: 1rem;
-  background: white;
   border: 1px solid hsl(0 0% 100% / 0.15);
   backdrop-filter: blur(calc(var(--cardblur, 5) * 1px));
   touch-action: none;
@@ -177,6 +176,7 @@ article:nth-of-type(3) {
   gap: 0.5rem;
   padding: 10px;
   padding-left: 0px;
+ 
 }
 
 .project-info-title {
