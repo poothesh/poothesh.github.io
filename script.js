@@ -40,21 +40,6 @@ document.body.addEventListener('pointermove', (event) => {
   });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   const icons = document.querySelectorAll('.skill-icon');
         const container = document.querySelector('.skills-container');
         const toggleButton = document.querySelector('.toggle-follow');
@@ -231,3 +216,88 @@ document.body.addEventListener('pointermove', (event) => {
   
         wrapper.addEventListener('click', () => disappearIn3D(wrapper));
       });
+
+      const certifications = [
+        { name: 'C Programming', platform: 'Udemy', logo: 'https://img.icons8.com/color/48/000000/c-programming.png' },
+        { name: 'Java', platform: 'Udemy', logo: 'https://img.icons8.com/color/48/000000/java-coffee-cup-logo.png' },
+        { name: 'Python', platform: 'Guvi', logo: 'https://img.icons8.com/color/48/000000/python.png' },
+        { name: 'HTML', platform: 'Udemy', logo: 'https://img.icons8.com/color/48/000000/html-5.png' },
+        { name: 'CSS', platform: 'Udemy', logo: 'https://img.icons8.com/color/48/000000/css3.png' },
+        { name: 'Bootstrap', platform: 'Guvi', logo: 'https://img.icons8.com/color/48/000000/bootstrap.png' },
+        { name: 'JavaScript', platform: 'Udemy', logo: 'https://img.icons8.com/color/48/000000/javascript.png' },
+        { name: 'React', platform: 'Udemy', logo: 'https://img.icons8.com/color/48/000000/react-native.png' },
+        { name: 'Git', platform: 'Udemy', logo: 'https://img.icons8.com/color/48/000000/git.png' }
+    ];
+
+    const track = document.getElementById('certTrack');
+    let scrollPosition = 0;
+    let isScrolling = true;
+    let animationFrameId = null;
+
+    function createCertificationCards() {
+        // Create three sets of cards for smooth infinite scrolling
+        const tripleCards = [...certifications, ...certifications, ...certifications];
+        
+        tripleCards.forEach((cert) => {
+            const card = document.createElement('div');
+            card.className = 'cert-item';
+            
+            card.innerHTML = `
+                <div class="cert-logo-wrapper">
+                    <img src="${cert.logo}" alt="${cert.name}" class="cert-logo">
+                </div>
+                <div class="cert-info">
+                    <div class="cert-name">${cert.name}</div>
+                    <div class="cert-platform">${cert.platform}</div>
+                </div>
+            `;
+            
+            // Pause scrolling on hover
+            card.addEventListener('mouseenter', () => {
+                stopScrolling();
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                startScrolling();
+            });
+            
+            track.appendChild(card);
+        });
+    }
+
+    function scrollCertifications() {
+        if (!isScrolling) return;
+
+        scrollPosition -= 0.5; // Reduced speed for smoother scrolling
+        const firstCardWidth = track.firstElementChild.offsetWidth + 24; // Including gap
+
+        if (Math.abs(scrollPosition) >= firstCardWidth) {
+            scrollPosition = 0;
+            track.appendChild(track.firstElementChild);
+        }
+
+        track.style.transform = `translateX(${scrollPosition}px)`;
+        animationFrameId = requestAnimationFrame(scrollCertifications);
+    }
+
+    function stopScrolling() {
+        isScrolling = false;
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+        }
+    }
+
+    function startScrolling() {
+        if (!isScrolling) {
+            isScrolling = true;
+            scrollCertifications();
+        }
+    }
+
+    // Initialize
+    createCertificationCards();
+    scrollCertifications();
+
+    // Add event listeners for the container
+    track.addEventListener('mouseenter', stopScrolling);
+    track.addEventListener('mouseleave', startScrolling);
