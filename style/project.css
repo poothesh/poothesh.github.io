@@ -222,14 +222,5 @@ article:nth-of-type(3) {
 }
 
 .glow-symbol:hover {
-  color: #16dcff;
-}
-.glow-k:hover{
-    color: #CD6826;
-}
-.glow-c:hover{
-    color: #2A5060;
-}
-.glow-c:hover{
-    color: #2A5060;
+  color: #ffc107;
 }

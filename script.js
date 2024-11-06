@@ -140,7 +140,7 @@ document.body.addEventListener('pointermove', (event) => {
                     icon.style.transform = 'none';
                 });
                 updatePositions();
-                toggleButton.textContent = 'Stop Following';
+                toggleButton.textContent = 'Step back';
             } else {
                 icons.forEach(icon => {
                     icon.style.left = '';
@@ -148,7 +148,7 @@ document.body.addEventListener('pointermove', (event) => {
                 });
                 startTime = Date.now();
                 updateWaveAnimation();
-                toggleButton.textContent = 'Click to suprise';
+                toggleButton.textContent = 'Abracadabra';
             }
         });
 
@@ -301,3 +301,18 @@ document.body.addEventListener('pointermove', (event) => {
     // Add event listeners for the container
     track.addEventListener('mouseenter', stopScrolling);
     track.addEventListener('mouseleave', startScrolling);
+
+
+    function createSoftSkillsStars() {
+        const starSection = document.querySelector('.soft-skills-star-section');
+        for (let i = 0; i < 40; i++) {
+          const star = document.createElement('span');
+          star.className = 'soft-skills-star';
+          star.textContent = '✦';
+          star.style.left = Math.random() * 100 + '%';
+          star.style.top = Math.random() * 100 + '%';
+          star.style.animationDelay = Math.random() * 3 + 's';
+          starSection.appendChild(star);
+        }
+      }
+      createSoftSkillsStars();

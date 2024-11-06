@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills Section</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css">
   <style>
-    .skills-heading {
+    .soft-skills-heading {
       text-align: center;
       color: #333;
       margin-bottom: 3rem;
@@ -13,7 +17,7 @@
       letter-spacing: 2px;
     }
 
-    .skills-heading::after {
+    .soft-skills-heading::after {
       content: '';
       position: absolute;
       bottom: -10px;
@@ -25,70 +29,60 @@
       border-radius: 2px;
     }
 
-    .skills-star {
+    .soft-skills-star-section {
+      position: relative;
+      height: 93vh;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .soft-skills-star {
       position: absolute;
       color: #ffd700;
-      animation: skillsBlink 2s infinite;
+      animation: softSkillsBlink 2s infinite;
       text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
       z-index: 1;
       font-size: 16px;
     }
 
-    @keyframes skillsBlink {
+    @keyframes softSkillsBlink {
       0%, 100% { opacity: 1; filter: brightness(1); }
       50% { opacity: 0.3; filter: brightness(1.8); }
     }
 
-    @keyframes skillsSparkle {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.2); opacity: 0.8; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes skillsFloat {
+    @keyframes softSkillsFloat {
       0% { transform: translateY(0px); }
       50% { transform: translateY(-10px); }
       100% { transform: translateY(0px); }
     }
 
-    @keyframes skillsProgress {
-      0% { 
-        width: 0;
-        opacity: 1;
-      }
-      100% { 
-        opacity: 1;
-      }
-    }
-
-    .skills-box {
+    .soft-skills-box {
       margin: 25px 0;
-      animation: skillsFloat 6s infinite ease-in-out;
+      animation: softSkillsFloat 6s infinite ease-in-out;
       text-align: right;
       position: relative;
     }
 
-    .skills-title-container {
+    .soft-skills-title-container {
       display: flex;
       justify-content: flex-end;
       align-items: center;
       margin-bottom: 10px;
     }
 
-    .skills-title {
+    .soft-skills-title {
       font-size: 1.2rem;
       font-weight: 600;
       color: #333;
       margin-right: 10px;
     }
 
-    .skills-icon {
+    .soft-skills-icon {
       font-size: 1.8rem;
-      animation: skillsSparkle 2s infinite;
       margin-left: 10px;
     }
 
-    .skills-bar {
+    .soft-skills-bar {
       height: 12px;
       width: 100%;
       background: rgba(0, 0, 0, 0.05);
@@ -97,17 +91,17 @@
       position: relative;
     }
 
-    .skills-per {
+    .soft-skills-per {
       position: absolute;
       height: 100%;
       right: 0;
       background: linear-gradient(90deg, #ffeb3b, #ffc107);
       border-radius: 10px;
-      animation: skillsProgress 1.5s ease-in-out forwards;
+      animation: softSkillsProgress 1.5s ease-in-out forwards;
       box-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
     }
 
-    .skills-tooltip {
+    .soft-skills-tooltip {
       position: absolute;
       left: 0;
       top: -35px;
@@ -122,7 +116,7 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
-    .skills-tooltip::before {
+    .soft-skills-tooltip::before {
       content: '';
       position: absolute;
       bottom: -4px;
@@ -132,85 +126,101 @@
       height: 8px;
       background: #ffc107;
     }
+
+    .soft-skills-container {
+      width: 60%;
+      float: right;
+    }
   </style>
 </head>
 <body>
-  <h1 class="skills-heading">Skills</h1>
+
+<div class="container my-5">
+  <div class="soft-skills-star-section">
+    <!-- Stars will be dynamically added here -->
   
-  <div class="skills-box">
-    <div class="skills-title-container">
-      <span class="skills-title">Creativity</span>
-      <i class="fa-solid fa-lightbulb skills-icon"></i>
+
+  <div class="soft-skills-container">
+    <h1 class="soft-skills-heading">Skills</h1>
+
+    <div class="soft-skills-box">
+      <div class="soft-skills-title-container">
+        <span class="soft-skills-title">Creativity</span>
+        <i class="fa-solid fa-lightbulb soft-skills-icon"></i>
+      </div>
+      <div class="soft-skills-bar">
+        <div class="soft-skills-per" style="width: 90%;">
+          <span class="soft-skills-tooltip">90%</span>
+        </div>
+      </div>
     </div>
-    <div class="skills-bar">
-      <div class="skills-per" style="width: 90%">
-        <span class="skills-tooltip">90%</span>
+
+    <div class="soft-skills-box">
+      <div class="soft-skills-title-container">
+        <span class="soft-skills-title">Leadership</span>
+        <i class="fa-solid fa-person-military-rifle soft-skills-icon"></i>
+      </div>
+      <div class="soft-skills-bar">
+        <div class="soft-skills-per" style="width: 88%;">
+          <span class="soft-skills-tooltip">88%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="soft-skills-box">
+      <div class="soft-skills-title-container">
+        <span class="soft-skills-title">Adaptability</span>
+        <i class="fa-solid fa-masks-theater soft-skills-icon"></i>
+      </div>
+      <div class="soft-skills-bar">
+        <div class="soft-skills-per" style="width: 86%;">
+          <span class="soft-skills-tooltip">86%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="soft-skills-box">
+      <div class="soft-skills-title-container">
+        <span class="soft-skills-title">Photography</span>
+        <i class="fa-solid fa-camera-retro soft-skills-icon"></i>
+      </div>
+      <div class="soft-skills-bar">
+        <div class="soft-skills-per" style="width: 85%;">
+          <span class="soft-skills-tooltip">85%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="soft-skills-box">
+      <div class="soft-skills-title-container">
+        <span class="soft-skills-title">Communication</span>
+        <i class="fa-solid fa-phone soft-skills-icon"></i>
+      </div>
+      <div class="soft-skills-bar">
+        <div class="soft-skills-per" style="width: 80%;">
+          <span class="soft-skills-tooltip">80%</span>
+        </div>
       </div>
     </div>
   </div>
+</div>
+</div>
 
-  <div class="skills-box">
-    <div class="skills-title-container">
-      <span class="skills-title">Leadership</span>
-      <i class="fa-solid fa-person-military-rifle skills-icon"></i>
-    </div>
-    <div class="skills-bar">
-      <div class="skills-per" style="width: 88%">
-        <span class="skills-tooltip">88%</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="skills-box">
-    <div class="skills-title-container">
-      <span class="skills-title">Adaptability</span>
-      <i class="fa-solid fa-masks-theater skills-icon"></i>
-    </div>
-    <div class="skills-bar">
-      <div class="skills-per" style="width: 86%">
-        <span class="skills-tooltip">86%</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="skills-box">
-    <div class="skills-title-container">
-      <span class="skills-title">Photography</span>
-      <i class="fa-solid fa-camera-retro skills-icon"></i>
-    </div>
-    <div class="skills-bar">
-      <div class="skills-per" style="width: 85%">
-        <span class="skills-tooltip">85%</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="skills-box">
-    <div class="skills-title-container">
-      <span class="skills-title">Communication</span>
-      <i class="fa-solid fa-phone skills-icon"></i>
-    </div>
-    <div class="skills-bar">
-      <div class="skills-per" style="width: 80%">
-        <span class="skills-tooltip">80%</span>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function createSkillsStars() {
-      const container = document.body;
-      for (let i = 0; i < 30; i++) {
-        const star = document.createElement('span');
-        star.className = 'skills-star';
-        star.textContent = '✦';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.animationDelay = Math.random() * 3 + 's';
-        container.appendChild(star);
-      }
+<script>
+  function createSoftSkillsStars() {
+    const starSection = document.querySelector('.soft-skills-star-section');
+    for (let i = 0; i < 40; i++) {
+      const star = document.createElement('span');
+      star.className = 'soft-skills-star';
+      star.textContent = '✦';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      starSection.appendChild(star);
     }
-    createSkillsStars();
-  </script>
+  }
+  createSoftSkillsStars();
+</script>
+
 </body>
 </html>
