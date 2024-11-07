@@ -276,3 +276,12 @@ background: linear-gradient(
 .socialcontainer:hover .social-icon-4 {
 transform: translateY(-70px);
 }
+
+
+.copyright{
+    display: flex; align-items: center; justify-content: center; color: antiquewhite;
+    padding: 20px;
+    border-top: 1px solid  #000000;
+    border-bottom: 1px solid  #000000;
+    margin-top: 10px;
+}
