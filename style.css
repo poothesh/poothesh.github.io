@@ -96,7 +96,7 @@ h1, h2 {
     color: #fff;
     font-size: 1em;
     user-select: none;
-    z-index: 1; /* Ensure this is lower than the glass */
+    z-index: -1; /* Ensure this is lower than the glass */
     pointer-events: none;
     animation: fall linear infinite;
 }

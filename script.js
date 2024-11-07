@@ -7,6 +7,31 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+function smoothScrollTo(target, duration) {
+    const startPosition = window.pageYOffset;
+    const targetPosition = document.querySelector(target).offsetTop;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
+  
+    function animation(currentTime) {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const run = ease(timeElapsed, startPosition, distance, duration);
+      window.scrollTo(0, run);
+      if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
+  
+    // Ease function for smooth scroll effect
+    function ease(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return (c / 2) * t * t + b;
+      t--;
+      return (-c / 2) * (t * (t - 2) - 1) + b;
+    }
+  
+    requestAnimationFrame(animation);
+  }
+
 function createSnowflake() {
     const snowflake = document.createElement('div');
     snowflake.classList.add('snowflake');
@@ -16,6 +41,8 @@ function createSnowflake() {
     snowflake.style.fontSize = Math.random() * 9 + 10 + 'px';
     snowflake.style.animationDuration = Math.random() * 75 + 6 + 's';
     document.body.appendChild(snowflake);
+
+
     snowflake.addEventListener('animationend', () => {
         snowflake.remove();
     });
@@ -37,10 +64,9 @@ document.body.addEventListener('pointermove', (event) => {
     document.documentElement.style.setProperty('--xp', xp);
     document.documentElement.style.setProperty('--y', y);
     document.documentElement.style.setProperty('--yp', yp);
-  });
+});
 
-
-  const icons = document.querySelectorAll('.skill-icon');
+const icons = document.querySelectorAll('.skill-icon');
         const container = document.querySelector('.skills-container');
         const toggleButton = document.querySelector('.toggle-follow');
         let isFollowing = false;
@@ -316,3 +342,33 @@ document.body.addEventListener('pointermove', (event) => {
         }
       }
       createSoftSkillsStars();
+
+    //   contact
+
+
+    document.getElementById('contactForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+  
+        const form = event.target;
+        const formData = new FormData(form);
+  
+        try {
+          const response = await fetch('https://script.google.com/macros/s/AKfycbxv-1dsfLI83oCbXZbkTKW0rHEoB5wC4cgpqa4lRmq8LjbEAQZsfx9n5naO3eSEFXyl/exec', {
+            method: 'POST',
+            body: formData,
+          });
+  
+          if (response.ok) {
+            alert('Form submitted successfully!');
+            form.reset(); // Reset form fields
+          } else {
+            alert('There was an error submitting the form. Please try again.');
+          }
+        } catch (error) {
+          alert('There was an error submitting the form. Please try again.');
+        }
+      });
+
+      const pageHeight = document.body.scrollHeight;
+      console.log("Total page height:", pageHeight + "px");
+      

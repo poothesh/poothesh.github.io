@@ -150,7 +150,7 @@ button[data-glow] span {
 }
 
 button[data-glow]:hover span {
-  color: #16dcff;
+  color: #ffd045;
 }
 
 article:nth-of-type(1) {

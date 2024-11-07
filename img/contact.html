@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Animated Border</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        /* Initial border styles */
+        .border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 4px solid transparent;
+            border-radius: 10px;
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
+
+        /* Animation on hover using JavaScript */
+        .hovered .border {
+            border-color: #ffaa40;
+            animation: borderAnimation 2s infinite alternate;
+        }
+
+        @keyframes borderAnimation {
+            0% {
+                border-width: 4px;
+                transform: scale(1);
+            }
+            50% {
+                border-width: 8px;
+                transform: scale(1.05);
+            }
+            100% {
+                border-width: 4px;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="animated-container">
+        <div class="border"></div>
+        <div class="content">
+            <h2>Hover Me!</h2>
+        </div>
+    </div>
+
+    <script>
+        // Select the container and border element
+        const container = document.getElementById('animated-container');
+        const border = container.querySelector('.border');
+
+        // Function to add hover effect with animation
+        container.addEventListener('mouseenter', () => {
+            container.classList.add('hovered');
+        });
+
+        container.addEventListener('mouseleave', () => {
+            container.classList.remove('hovered');
+        });
+
+        // Optionally: You can change the animation dynamically via JS
+        function updateBorderAnimation(color, duration) {
+            border.style.animationDuration = duration + 's';
+            border.style.borderColor = color;
+        }
+
+        // Example: Update border properties dynamically after 5 seconds
+        setTimeout(() => {
+            updateBorderAnimation('#ff6347', 3); // Change color to tomato and duration to 3s
+        }, 5000);
+    </script>
+
+</body>
+</html>
