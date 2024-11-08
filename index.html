@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
+                        <a class="nav-link" href="#home">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#qualification">Qualification</a>
@@ -97,8 +97,8 @@
             
             
             <h1 class="cert-heading" id="skills">Certifications</h1>
-            <div class="cert-section">
-                <div class="cert-container">
+            <div class="cert-section" >
+                <div class="cert-container" >
                     <div class="cert-track" id="certTrack"></div>
                 </div>
             </div>
@@ -382,13 +382,13 @@
     
         <label>Rate-MyPage</label>
         <div class="rating">
-          <input type="radio" id="star-1" name="ratings" value="1">
+          <input type="radio" id="star-1" name="ratings" value="5">
           <label for="star-1">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path pathLength="360" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path>
             </svg>
           </label>
-          <input type="radio" id="star-2" name="ratings" value="2">
+          <input type="radio" id="star-2" name="ratings" value="4">
           <label for="star-2">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path pathLength="360" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path>
@@ -400,13 +400,13 @@
               <path pathLength="360" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path>
             </svg>
           </label>
-          <input type="radio" id="star-4" name="ratings" value="4">
+          <input type="radio" id="star-4" name="ratings" value="2">
           <label for="star-4">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path pathLength="360" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path>
             </svg>
           </label>
-          <input type="radio" id="star-5" name="ratings" value="5">
+          <input type="radio" id="star-5" name="ratings" value="1">
           <label for="star-5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path pathLength="360" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path>
@@ -417,7 +417,40 @@
     <div class="col-md-4">
         <label for="queries">Any Queries</label>
         <textarea id="queries" name="queries" placeholder="Write your queries here..."></textarea>
-        <button type="submit" class="sumit-btn" >Submit</button>
+        
+        <div class="title">Wanna Collab?</div>
+        <div class="label-container">
+          <input type="checkbox" id="yes" name="collaboration" value="yes" style="display: none;">
+          <label for="yes" class="check">
+              <span class="checkmark">
+                  <svg width="18px" height="18px" viewBox="0 0 18 18">
+                      <path d="M 1 9 L 1 9 c 0 -5 3 -8 8 -8 L 9 1 C 14 1 17 5 17 9 L 17 9 c 0 4 -4 8 -8 8 L 9 17 C 5 17 1 14 1 9 L 1 9 Z"></path>
+                      <polyline points="1 9 7 14 15 4"></polyline>
+                  </svg>
+              </span>
+        
+          </label>
+      </div>
+
+      <!-- Label container for No -->
+      <div class="label-container">
+          <input type="checkbox" id="no" name="collaboration" value="no" style="display: none;">
+          <label for="no">
+              <span class="crossmark">
+                  <svg width="18px" height="18px" viewBox="0 0 18 18">
+                      <path d="M 1 9 L 1 9 c 0 -5 3 -8 8 -8 L 9 1 C 14 1 17 5 17 9 L 17 9 c 0 4 -4 8 -8 8 L 9 17 C 5 17 1 14 1 9 L 1 9 Z"></path>
+                      <polyline points="4 4 14 14"></polyline>
+                      <polyline points="14 4 4 14"></polyline>
+                  </svg>
+              </span>
+             
+          </label>
+      </div>
+
+
+      <div class="parent-container">
+        <button type="submit" class="sumit-btn">Submit</button>
+      </div>
       
     
         

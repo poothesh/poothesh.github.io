@@ -62,37 +62,44 @@ footer{
     margin-bottom: 15px;
   }
 
-  .sumit-btn {
-    display: flex;
-align-items: center;
-justify-content: center;
-outline: none;
-cursor: pointer;
-width: 120px;
-height: 45px;
-background-image: linear-gradient(to top, #ffc73a 0%, #000000 80%, #000000 100%);
-border-radius: 30px;
-border: 1px solid #ffc73a;
-transition: all 0.2s ease;
-font-family: "Source Sans Pro", sans-serif;
-font-size: 14px;
-font-weight: 600;
-color: #ffffff;
-text-shadow: 0 1px #000000;
-  }
-
-.sumit-btn:hover {
-    box-shadow: 0px 0px 25px 4px rgba(255,199,58,1);
--webkit-box-shadow: 0px 0px 25px 4px rgba(255,199,58,1);
--moz-box-shadow: 0px 0px 25px 4px rgba(255,199,58,1);
-  }
-
-  .sumit-btn:active {
-    box-shadow: 0px 0px 6px 5px rgba(22,220,255,0.75) inset;
--webkit-box-shadow: 0px 0px 6px 5px rgba(22,220,255,0.75) inset;
--moz-box-shadow: 0px 0px 6px 5px rgba(22,220,255,0.75) inset;
+  .parent-container {
+    position: relative; /* Make the parent a positioned container */
 }
 
+.sumit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    cursor: pointer;
+    width: 120px;
+    height: 45px;
+    background-image: linear-gradient(to top, #ffc73a 0%, #000000 80%, #000000 100%);
+    border-radius: 30px;
+    border: 1px solid #ffc73a;
+    transition: all 0.2s ease;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 1px #000000;
+    text-align: center;
+    line-height: 45px;
+    position: absolute;
+    right: 40px; /* Adjust the value to position it as needed */
+}
+
+.sumit-btn:hover {
+  box-shadow: 0px 0px 25px 4px rgba(255,199,58,1) !important;
+  -webkit-box-shadow: 0px 0px 25px 4px rgba(255,199,58,1);
+  -moz-box-shadow: 0px 0px 25px 4px rgba(255,199,58,1);
+}
+
+.sumit-btn:active {
+  box-shadow: 0px 0px 6px 5px rgba(22,220,255,0.75) ;
+  -webkit-box-shadow: 0px 0px 6px 5px rgba(22,220,255,0.75) ;
+  -moz-box-shadow: 0px 0px 6px 5px rgba(22,220,255,0.75) ;
+}
 
   /* Custom rating component styles */
   .rating {
@@ -277,11 +284,84 @@ background: linear-gradient(
 transform: translateY(-70px);
 }
 
+.title {
+  font-weight: bold;
+  margin-right: 10px;
+  padding-bottom: 10px;
+  color: #ffc107;
+}
+.checkmark, .crossmark {
+  /* padding: 10px; */
+  cursor: pointer;
+  position: relative;
+  margin: 0px;
+  width: 18px;
+  height: 18px;
+  -webkit-tap-highlight-color: transparent;
+  transform: translate3d(0, 0, 0);
+  float: left;
+}
+.checkmark svg, .crossmark svg {
+  position: relative;
+  z-index: 1;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #16dcff;
+  stroke-width: 1.5;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.2s ease;
+}
+.checkmark svg path, .crossmark svg path {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 0;
+}
+.checkmark svg polyline, .crossmark svg polyline {
+  stroke-dasharray: 22;
+  stroke-dashoffset: 66;
+}
+.checkmark:hover svg {
+  stroke: #55ff00;
+}
+.crossmark:hover svg {
+  stroke: #ff0000;
+}
+#yes:checked + label .checkmark svg {
+  stroke: #55ff00;
+}
+#yes:checked + label .checkmark svg path {
+  stroke-dashoffset: 60;
+  transition: all 0.3s linear;
+}
+#yes:checked + label .checkmark svg polyline {
+  stroke-dashoffset: 42;
+  transition: all 0.2s linear;
+  transition-delay: 0.15s;
+}
+#no:checked + label .crossmark svg {
+  stroke: #ff0000;
+}
+#no:checked + label .crossmark svg path {
+  stroke-dashoffset: 60;
+  transition: all 0.3s linear;
+}
+#no:checked + label .crossmark svg polyline {
+  stroke-dashoffset: 0;
+  transition: all 0.2s linear;
+  transition-delay: 0.15s;
+}
+.label-container {
+  
+  display: flex;
+  align-items: center;
+  margin: 0 15px;
+  float: left;
+}
 
 .copyright{
     display: flex; align-items: center; justify-content: center; color: antiquewhite;
-    padding: 20px;
+    padding: 40px;
     border-top: 1px solid  #000000;
-    border-bottom: 1px solid  #000000;
     margin-top: 10px;
+    padding-bottom: 0px !important;
 }

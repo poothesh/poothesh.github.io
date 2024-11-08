@@ -84,7 +84,7 @@ main {
     calc(var(--spotlight-size) * 0.75) calc(var(--spotlight-size) * 0.75) at
     calc(var(--x, 0) * 1px)
     calc(var(--y, 0) * 1px),
-    #16dcff,
+    #826200,
     transparent 100%
   );
   filter: brightness(2);
@@ -95,7 +95,7 @@ main {
     calc(var(--spotlight-size) * 0.5) calc(var(--spotlight-size) * 0.5) at
     calc(var(--x, 0) * 1px)
     calc(var(--y, 0) * 1px),
-    #90e1ef90,
+    #00d9ff,
     transparent 100%
   );
 }
