@@ -3,36 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sky Cracker Confetti with Checkbox</title>
-    <style>
-        .check {
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            background-color: #eee;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        /* Style for checked state */
-        input[type="checkbox"]:checked + .check {
-            background-color: #00f;
-            border-color: #00f;
-        }
-    </style>
+    <title>Sky Cracker Confetti Effect</title>
 </head>
 <body>
-    <!-- Hidden checkbox input -->
-    <input type="checkbox" id="yes" name="collaboration" value="yes" style="display: none;">
-    <!-- Custom label styled as a check -->
-    <label for="yes" class="check"></label>
+    <button id="confettiButton">Celebrate!</button>
 
     <!-- Include the canvas-confetti library -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script>
         // Function to trigger the sky-cracker style confetti effect
         function fireSkyCracker() {
+            // Create multiple "crackers" that rise up and burst
             const duration = 2 * 1000; // Duration of the effect in ms
             const animationEnd = Date.now() + duration;
             const defaultColors = ['#ff0', '#f00', '#0f0', '#00f', '#ff69b4', '#ff4500'];
@@ -51,25 +32,22 @@
                 // Configure and launch a confetti burst
                 confetti({
                     particleCount: 10,
-                    startVelocity: 30,
+                    startVelocity: 30, // Speed of particles moving up
                     spread: 60,
                     origin: {
-                        x: Math.random(),
-                        y: 1
+                        x: Math.random(), // Random horizontal position
+                        y: 1 // Start from bottom of the screen
                     },
                     colors: [defaultColors[Math.floor(Math.random() * defaultColors.length)]]
                 });
 
+                // Continue launching confetti
                 requestAnimationFrame(frame);
             })();
         }
 
-        // Add event listener to trigger confetti when the checkbox is checked
-        document.getElementById('yes').addEventListener('change', function() {
-            if (this.checked) {
-                fireSkyCracker();
-            }
-        });
+        // Add event listener to the button to trigger the sky-cracker effect on click
+        document.getElementById('confettiButton').addEventListener('click', fireSkyCracker);
     </script>
 </body>
 </html>

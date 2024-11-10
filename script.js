@@ -372,3 +372,44 @@ const icons = document.querySelectorAll('.skill-icon');
       const pageHeight = document.body.scrollHeight;
       console.log("Total page height:", pageHeight + "px");
       
+
+
+
+    //   party
+
+    function fireSkyCracker() {
+        // Create multiple "crackers" that rise up and burst
+        const duration = 2 * 1000; // Duration of the effect in ms
+        const animationEnd = Date.now() + duration;
+        const defaultColors = ['#ff0', '#f00', '#0f0', '#fff' , '#ff69b4', '#ff4500'];
+
+        function randomInRange(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        (function frame() {
+            const timeLeft = animationEnd - Date.now();
+
+            if (timeLeft <= 0) {
+                return;
+            }
+
+            // Configure and launch a confetti burst
+            confetti({
+                particleCount: 5,
+                startVelocity: 30, // Speed of particles moving up
+                spread: 60,
+                origin: {
+                    x: Math.random(), // Random horizontal position
+                    y: 1 // Start from bottom of the screen
+                },
+                colors: [defaultColors[Math.floor(Math.random() * defaultColors.length)]]
+            });
+
+            // Continue launching confetti
+            requestAnimationFrame(frame);
+        })();
+    }
+
+    // Add event listener to the button to trigger the sky-cracker effect on click
+    document.getElementById('yes').addEventListener('click', fireSkyCracker);
