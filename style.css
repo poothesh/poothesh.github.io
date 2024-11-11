@@ -38,13 +38,26 @@ body {
 .nav-glass {
     background: rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(10px);
+    
 }
-@keyframes colorChange {
-    0%, 100% {
-        color: white; /* Starting and ending color */
+nav{
+    border-bottom: 5px ;
+}
+nav::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right,#16dcff,#ffeb3b, #16dcff, #ffeb3b, #16dcff,#ffeb3b,#16dcff,#ffeb3b, #16dcff,#ffeb3b,#16dcff);
+  }    
+  @keyframes colorChange {
+    0% {
+        color: #ffeb3b; /* Starting color - Gold */
     }
-    50% {
-        color: #16dcffd7; /* Desired color */
+    100% {
+        color: #16dcff; /* Ending color - Blue */
     }
 }
 
@@ -52,11 +65,12 @@ body {
     display: inline-block;
     font-size: 1.5rem; /* Adjust size as needed */
     height: 50px;
+    
 }
 
 .letter {
     display: inline-block;
-    animation: colorChange 1s linear infinite; /* Infinite animation */
+    animation: colorChange 4s linear infinite; /* Infinite animation */
     animation-fill-mode: forwards; /* Maintain final color at the end of the cycle */
 }
 .nav-link {
