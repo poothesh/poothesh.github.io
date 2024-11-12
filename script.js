@@ -331,7 +331,7 @@ const icons = document.querySelectorAll('.skill-icon');
 
     function createSoftSkillsStars() {
         const starSection = document.querySelector('.soft-skills-star-section');
-        for (let i = 0; i < 40; i++) {
+        for (let i = 0; i < 50; i++) {
           const star = document.createElement('span');
           star.className = 'soft-skills-star';
           star.textContent = '✦';

@@ -120,6 +120,7 @@
     animation: softSkillsFloat 6s infinite ease-in-out;
     text-align: right;
     position: relative;
+    
   }
 
   .soft-skills-title-container {
@@ -127,6 +128,7 @@
     justify-content: flex-end;
     align-items: center;
     margin-bottom: 10px;
+    height: 100%;
   }
 
   .soft-skills-title {
