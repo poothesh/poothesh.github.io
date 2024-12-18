@@ -353,7 +353,7 @@ const icons = document.querySelectorAll('.skill-icon');
         const formData = new FormData(form);
   
         try {
-          const response = await fetch('https://script.google.com/macros/s/AKfycbxv-1dsfLI83oCbXZbkTKW0rHEoB5wC4cgpqa4lRmq8LjbEAQZsfx9n5naO3eSEFXyl/exec', {
+          const response = await fetch('https://script.google.com/macros/s/AKfycbxa6EDj04mQOuAWAocmn5OGdO2oaz3yAL1HzB2Ni3ZYEV0dh7p_zfk_USZUm50_inFL/exec', {
             method: 'POST',
             body: formData,
           });
