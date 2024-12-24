@@ -130,3 +130,112 @@ h1, h2 {
         opacity: 0;
     }
 }
+
+@media (max-width: 1024px) {
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+
+    .info-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .skills-title {
+        font-size: 1.5rem;
+    }
+
+    .skills-container {
+        flex-direction: column;
+    }
+
+    .skills-container i {
+        margin: 10px 0;
+        font-size: 2rem;
+    }
+
+    .school-name {
+        font-size: 1rem;
+    }
+
+    .school-container {
+        padding: 15px;
+    }
+
+    span {
+        font-size: 20px;
+    }
+}
+
+/* Mobile Devices (portrait) */
+@media (max-width: 768px) {
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+
+    .info-section h2 {
+        font-size: 1.6rem;
+    }
+
+    .skills-title {
+        font-size: 1.3rem;
+    }
+
+    .skills-container i {
+        margin: 5px 0;
+        font-size: 1.8rem;
+    }
+
+    .school-name {
+        font-size: 1rem;
+    }
+
+    span {
+        font-size: 18px;
+    }
+
+    .info-section {
+        text-align: left;
+    }
+}
+
+/* Mobile Devices (landscape) */
+@media (max-width: 480px) {
+    .profile-pic {
+        width: 80px;
+        height: 80px;
+    }
+
+    .info-section h2 {
+        font-size: 1.4rem;
+    }
+
+    .skills-title {
+        font-size: 1.2rem;
+    }
+
+    .skills-container i {
+        margin: 5px 0;
+        font-size: 1.5rem;
+    }
+
+    .school-name {
+        font-size: 0.9rem;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    span {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+}
+
+
+
